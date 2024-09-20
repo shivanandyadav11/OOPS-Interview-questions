@@ -1,4 +1,4 @@
-# OOP Interview Questions for First-Year Students
+# OOP Interview Questions for First-Year Students (Java)
 
 ## 1. What is Object-Oriented Programming?
 
@@ -15,57 +15,158 @@
 
 ## 3. Explain what a class is in OOP.
 
-**Answer:** A class is a blueprint or template for creating objects. It defines the attributes (data) and methods (functions) that the objects of that class will have. Classes serve as a structure for bundling data and functionality together.
+**Answer:** A class is a blueprint or template for creating objects. It defines the attributes (data) and methods (functions) that the objects of that class will have. In Java, a class is defined using the `class` keyword. For example:
+
+```java
+public class Car {
+    private String model;
+    private int year;
+
+    public void startEngine() {
+        System.out.println("Engine started!");
+    }
+}
+```
 
 ## 4. What is an object in OOP?
 
-**Answer:** An object is an instance of a class. It is a concrete entity based on a class, and represents a specific instance of that class in memory. Objects have states (attributes) and behaviors (methods) as defined by their class.
+**Answer:** An object is an instance of a class. It is a concrete entity based on a class, and represents a specific instance of that class in memory. In Java, objects are created using the `new` keyword:
+
+```java
+Car myCar = new Car();
+```
 
 ## 5. What is encapsulation?
 
-**Answer:** Encapsulation is the bundling of data and the methods that operate on that data within a single unit (like a class). It restricts direct access to some of an object's components, which is a means of preventing accidental interference and misuse of the methods and data.
+**Answer:** Encapsulation is the bundling of data and the methods that operate on that data within a single unit (like a class). In Java, encapsulation is often achieved using private attributes and public getter and setter methods:
+
+```java
+public class BankAccount {
+    private double balance;
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+        }
+    }
+}
+```
 
 ## 6. What is inheritance in OOP?
 
-**Answer:** Inheritance is a mechanism where a new class is derived from an existing class. The new class (subclass or derived class) inherits attributes and behaviors from the existing class (superclass or base class). This promotes code reusability and establishes a relationship between the parent and child classes.
+**Answer:** Inheritance is a mechanism where a new class is derived from an existing class. In Java, inheritance is implemented using the `extends` keyword:
+
+```java
+public class Animal {
+    public void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+
+public class Dog extends Animal {
+    public void bark() {
+        System.out.println("The dog barks.");
+    }
+}
+```
 
 ## 7. Explain polymorphism with a simple example.
 
-**Answer:** Polymorphism allows objects of different classes to be treated as objects of a common base class. A simple example is:
+**Answer:** Polymorphism allows objects of different classes to be treated as objects of a common base class. In Java, this can be demonstrated through method overriding:
 
-```python
-class Animal:
-    def speak(self):
-        pass
+```java
+public class Animal {
+    public void makeSound() {
+        System.out.println("The animal makes a sound");
+    }
+}
 
-class Dog(Animal):
-    def speak(self):
-        return "Woof!"
+public class Dog extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("The dog barks");
+    }
+}
 
-class Cat(Animal):
-    def speak(self):
-        return "Meow!"
+public class Cat extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("The cat meows");
+    }
+}
 
-def animal_sound(animal):
-    print(animal.speak())
-
-dog = Dog()
-cat = Cat()
-
-animal_sound(dog)  # Output: Woof!
-animal_sound(cat)  # Output: Meow!
+public class Main {
+    public static void main(String[] args) {
+        Animal myDog = new Dog();
+        Animal myCat = new Cat();
+        
+        myDog.makeSound();  // Output: The dog barks
+        myCat.makeSound();  // Output: The cat meows
+    }
+}
 ```
-
-In this example, both `Dog` and `Cat` classes override the `speak` method. The `animal_sound` function can work with any `Animal` object, demonstrating polymorphism.
 
 ## 8. What is abstraction in OOP?
 
-**Answer:** Abstraction is the process of hiding the complex implementation details and showing only the necessary features of an object. It helps in reducing programming complexity and effort. In OOP, abstraction can be achieved through abstract classes and interfaces.
+**Answer:** Abstraction is the process of hiding complex implementation details and showing only the necessary features of an object. In Java, abstraction can be achieved through abstract classes and interfaces:
+
+```java
+public abstract class Shape {
+    abstract double calculateArea();
+}
+
+public class Circle extends Shape {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}
+```
 
 ## 9. What is the difference between a class and an object?
 
-**Answer:** A class is a blueprint or template for creating objects. It defines the structure and behavior that the objects of that class will have. An object, on the other hand, is an instance of a class. It's a concrete entity based on the class, with actual values for its attributes and the ability to perform the methods defined in the class.
+**Answer:** A class is a blueprint or template for creating objects. An object is an instance of a class. In Java:
+
+```java
+// Class definition
+public class Car {
+    private String model;
+
+    public Car(String model) {
+        this.model = model;
+    }
+}
+
+// Object creation
+Car myCar = new Car("Tesla");
+```
 
 ## 10. What is a constructor in OOP?
 
-**Answer:** A constructor is a special method in a class that is automatically called when an object of that class is created. It is used to initialize the object's attributes. Constructors typically have the same name as the class and don't have a return type.
+**Answer:** A constructor is a special method in a class that is automatically called when an object of that class is created. In Java, constructors have the same name as the class and don't have a return type:
+
+```java
+public class Student {
+    private String name;
+    private int age;
+
+    // Constructor
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+// Usage
+Student newStudent = new Student("Alice", 20);
+```
